@@ -1,0 +1,3 @@
+[submodule "pyGMCALab"]
+	path = pyGMCALab
+	url = https://github.com/jbobin/pyGMCALab.git
