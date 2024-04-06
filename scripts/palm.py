@@ -1,10 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Wed Jan 19 16:56:48 2022
 
-@author: ckervazo
-"""
 
 import numpy as np
 import copy as cp
@@ -41,7 +35,7 @@ def PALM(X, A, S, lamb = 0, itmax = 100, Ainit=None):
     if Ainit:
         A_est = Ainit
     else :
-        A_est = np.random.rand(*A.shape)
+        A_est = eps+ np.random.rand(*A.shape)
     # A_est = Ainit#[0]# Initialization of A
 
     S_est_prev = deepcopy(S_est) # For the stopping criterion
