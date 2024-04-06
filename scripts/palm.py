@@ -27,7 +27,7 @@ def prox_oblique(A):
 
 #%%
 def PALM(X, A, S, lamb = 0, itmax = 100, Ainit=None):    
-    eps = 0.01
+    eps = 0.1
   
     it=0
     S_est = np.zeros([S.shape[0],S.shape[1]], dtype=float) # S_est_mb contains all the different samples of the estimated sources in a mini-batch
@@ -52,6 +52,7 @@ def PALM(X, A, S, lamb = 0, itmax = 100, Ainit=None):
         
         eta = 0.9/np.linalg.norm(S_est.squeeze()@S_est.squeeze().T,'nuc') # Lipschitz constant for A update
         A_est = prox_oblique(A_est+eta*(X-A_est@S_est)@S_est.T) #Proximal gradient step for A
+        A_est = np.maximum(A_est, 0)
         it += 1
     
     print('itmax %s'%it)
